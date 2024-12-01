@@ -1,0 +1,49 @@
+<main>
+  <section class="text-2xl text-center my-8 ...">
+    <p>
+      <span>{{ title }}</span> est une entreprise qui confectionne des figurines
+      inpirées de la bande dessinée <strong>Astérix et Obélix</strong>
+    </p>
+  </section>
+  <section>
+    <div class="p-8 ...">
+      <h2 class="flex justify-center my-4 text-xl">Nos produits</h2>
+      <form class="flex flex-row-reverse ...">
+        <!-- <label for="action">Search</label> -->
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Search...."
+          class="text-lg border-solid border-none ..."
+        />
+      </form>
+      <!-- ----- sort control ----- -->
+      <div class="my-4">
+        <label for="sort">Sort by:</label>
+        <select
+          [(ngModel)]="sortorder"
+          [ngModelOptions]="{ standalone: true }"
+          id="sort"
+        >
+          <option value="asc">Price (Low to High)</option>
+          <option value="desc">Price (High to Low)</option>
+        </select>
+      </div>
+    </div>
+    <ul class="grid grid-cols-2 justify-items-center mt-12">
+      <li *ngFor="let product of filteredProducts()" class="cursor-pointer">
+        <a [routerLink]="['/product', product.id]">
+          <img
+            [src]="product.imageUrl"
+            alt="{{ product.name }}"
+            class="w-64 ..."
+          />
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <p>Price: {{ product.price }}</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>

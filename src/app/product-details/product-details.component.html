@@ -1,0 +1,12 @@
+<div *ngIf="product">
+  <h1>{{ product.name }}</h1>
+  <img [src]="product.imageUrl" alt="{{ product.name }}" class="w-48" />
+  <p><strong>Description:</strong>{{ product.description }}</p>
+  <p><strong>Price:</strong>{{ product.price }}</p>
+  <a routerLink="/" class="text-blue-500 underline cursor-pointer"
+    >Back to Home</a
+  >
+</div>
+<div *ngIf="!product">
+  <p>product not found.</p>
+</div>
